@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet Circle Effect</title>
+<style>
+    body {
+        background-color: rgb(247, 196, 196);
+        font-family: Arial, sans-serif;
+       scroll-behavior: smooth;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        transition: filter 0.3s ease;
+        margin: 0;
+        overflow: hidden;
+        height:100vh;
+        width:100%;
+    
+    }
+
+
+    .alphabet-chart-container {
+        padding-top:20px;
+        display: flex;
+        flex-direction:column;
+        overflow-y: auto; 
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        width:100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .alphabet-chart {
+        border-radius:12px;
+        padding:12px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        height:80vh;
+        width: 40%;
+    }
+
+    .letter {
+        position: relative;
+        background-color:black;
+        text-align: center;
+        padding:25px;
+        border: 1px solid white;
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        color:white;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.932);
+    }
+    .letter:hover {
+        transform: scale(1.1);
+    }
+    .circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height:500px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
+        display: none;
+        z-index: 10;
+        cursor: pointer;
+    }
+    .circle img {
+        object-fit:fill;
+        border-radius:50%;
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .blurred {
+        filter: blur(5px);
+    }
+
+    .text{
+        font-size:20px;
+        font-weight:200;
+    }
+  
+</style>
+</head>
+<body>
+
+    <div class="alphabet-chart-container">
+        <div class="text">
+            <p>Please click on each alphabet to see things starting with that alphabet</p>
+        </div>
+    <div class="alphabet-chart">
+        <div class="letter" onclick="showCircle('A')">A</div>
+        <div class="letter" onclick="showCircle('B')">B</div>
+        <div class="letter" onclick="showCircle('C')">C</div>
+        <div class="letter" onclick="showCircle('D')">D</div>
+        <div class="letter" onclick="showCircle('E')">E</div>
+        <div class="letter" onclick="showCircle('F')">F</div>
+        <div class="letter" onclick="showCircle('G')">G</div>
+        <div class="letter" onclick="showCircle('H')">H</div>
+        <div class="letter" onclick="showCircle('I')">I</div>
+        <div class="letter" onclick="showCircle('J')">J</div>
+        <div class="letter" onclick="showCircle('K')">K</div>
+        <div class="letter" onclick="showCircle('L')">L</div>
+        <div class="letter" onclick="showCircle('M')">M</div>
+        <div class="letter" onclick="showCircle('N')">N</div>
+        <div class="letter" onclick="showCircle('O')">O</div>
+        <div class="letter" onclick="showCircle('P')">P</div>
+        <div class="letter" onclick="showCircle('Q')">Q</div>
+        <div class="letter" onclick="showCircle('R')">R</div>
+        <div class="letter" onclick="showCircle('S')">S</div>
+        <div class="letter" onclick="showCircle('T')">T</div>
+        <div class="letter" onclick="showCircle('U')">U</div>
+        <div class="letter" onclick="showCircle('V')">V</div>
+        <div class="letter" onclick="showCircle('W')">W</div>
+        <div class="letter" onclick="showCircle('X')">X</div>
+        <div class="letter" onclick="showCircle('Y')">Y</div>
+        <div class="letter" onclick="showCircle('Z')">Z</div>
+    </div>
+</div>
+
+<div class="circle" id="circle" onclick="hideCircle()">
+    <img class="img" src="" alt="Example Image">
+</div>
+
+
+
+
+<script>
+function showCircle(letter) {
+    var circle = document.getElementById('circle');
+    var exampleImage = circle.querySelector('img');
+    var alphabetChartContainer = document.querySelector('.alphabet-chart-container');
+    var imagePath = '';
+
+    // Define image paths for each letter
+    switch (letter) {
+        case 'A':
+            imagePath = 'https://www.seekpng.com/png/detail/45-455173_teacher-apple-clipart-apple-clipart-with-word.png';
+            break;
+        case 'B':
+            imagePath = 'https://static.vecteezy.com/system/resources/previews/006/574/091/original/learning-english-alphabet-for-kids-letter-b-cute-cartoon-bee-vector.jpg';
+            break;
+        case 'C':
+        imagePath = 'https://img.freepik.com/premium-vector/cute-cartoon-character-initial-letter-c-with-baby-wearing-cat-costume_181099-343.jpg?w=2000';
+        break;
+        case 'D':
+        imagePath = 'https://static.vecteezy.com/system/resources/previews/001/236/744/non_2x/d-for-dog-vector.jpg';
+        break;
+        case 'E':
+        imagePath = 'https://images.clipartlogo.com/files/istock/previews/1045/104524599-letter-e-tracing-elephant-standing-on-two-legs.jpg';
+        break;
+        case 'F':
+        imagePath = 'https://cdn1.vectorstock.com/i/1000x1000/51/60/letter-f-tracing-frog-eating-fly-vector-31965160.jpg';
+        break;
+        case 'G':
+        imagePath = 'https://previews.123rf.com/images/hermandesign2015/hermandesign20151801/hermandesign2015180100413/93072426-flashcard-letter-g-is-for-ghost-design.jpg';
+        break;
+        case 'H':
+        imagePath = 'https://thumbs.dreamstime.com/b/flashcard-letter-h-heart-illustration-flashcard-letter-h-heart-107285374.jpg';
+        break;
+        case 'I':
+        imagePath = 'https://i.pinimg.com/originals/20/f2/a2/20f2a2e278c821592ce032f90447b488.jpg';
+        break;
+        case 'J':
+        imagePath = 'https://cdn1.vectorstock.com/i/1000x1000/48/25/flashcard-letter-j-is-for-jester-vector-19404825.jpg';
+        break;
+        case 'K':
+        imagePath = 'https://static.vecteezy.com/system/resources/previews/002/583/382/original/vocabulary-flashcard-with-word-kite-free-vector.jpg';
+        break;
+        case 'L':
+        imagePath = 'https://img.freepik.com/premium-vector/zoo-animal-alphabet-l-lion-with-cute-animal_33070-4589.jpg';
+        break;
+        case 'M':
+        imagePath = 'https://static.storyweaver.org.in/illustrations/35542/search/14.jpg';
+        break;
+        case 'N':
+        imagePath = 'https://img.freepik.com/premium-vector/n-nest_96037-128.jpg';
+        break;  
+        case 'O':
+        imagePath = 'https://img.freepik.com/premium-vector/animal-alphabet-flashcard-children-learning-letter-o-o-is-octopus_122784-3309.jpg?w=2000';
+        break;
+        case 'P':
+        imagePath = 'https://media.istockphoto.com/vectors/letter-p-uppercase-tracing-pelican-bird-with-fish-in-mouth-vector-id1131308874?k=20&m=1131308874&s=170667a&w=0&h=ZrEdHUQ3JHKnyQKnXPW176boJh-NOSJRjsn5fAcMPow=';
+        break;
+        case 'Q':
+        imagePath = 'https://img.freepik.com/premium-vector/alphabet-q-queen-with-good-animation-beside_33070-4594.jpg?w=2000';
+        break;
+        case 'R':
+        imagePath = 'https://static.vecteezy.com/system/resources/previews/000/518/272/non_2x/r-for-rainbow-vector.jpg';
+        break;
+        case 'S':
+        imagePath = 'https://thumbs.dreamstime.com/b/alphabet-letter-s-star-alphabet-letter-s-star-vector-illustration-159912311.jpg';
+        break;
+        case 'T':
+        imagePath = 'https://static.vecteezy.com/system/resources/previews/002/281/712/original/kids-alphabet-letter-t-cute-cartoon-tiger-vector.jpg';
+        break;
+        case 'U':
+        imagePath = 'https://media.istockphoto.com/vectors/vector-illustration-for-learning-the-alphabet-for-children-with-u-vector-id1332582611?k=20&m=1332582611&s=612x612&w=0&h=peTh39rdXlo3GxBxtCOn1nWKVxrWyo31--0w-gyx4I0=';
+        break;
+        case 'V':
+        imagePath = 'https://media.istockphoto.com/vectors/vector-alphabet-letter-v-violin-vector-id842772654?k=20&m=842772654&s=170667a&w=0&h=boomVEqKiv0uNK0G1HlxgP3Q3twAKFzxhOcgbYtAnRI=';
+        break;
+        case 'W':
+        imagePath = 'https://media.istockphoto.com/vectors/vector-illustration-of-alphabet-letter-w-and-whale-vector-id1191806056?k=20&m=1191806056&s=170667a&w=0&h=vm7ziS7tWNLQ-Ty-EsV9hFoBMfII_UOfptdWgkfSzGI=';
+        break;  
+        case 'X':
+        imagePath = 'https://media.istockphoto.com/vectors/vector-illustration-for-learning-the-alphabet-for-children-with-x-vector-id1332583414?k=20&m=1332583414&s=612x612&w=0&h=P4L82HBxgg1k90o2CBFWblc0kokH2fs-qgNrHILn9LI=';
+        break;
+        case 'Y':
+        imagePath = 'https://static8.depositphotos.com/1353542/891/i/450/depositphotos_8919937-stock-photo-letter-y-yo-yo.jpg';
+        break;
+        case 'Z':
+        imagePath = 'https://img.freepik.com/premium-vector/alphabet-animals-kids-zebra_506530-198.jpg?w=2000';
+        break;
+   
+        // Add more cases for other letters as needed
+        default:
+            // Default case if no image path defined
+            imagePath = '';
+            break;
+    }
+
+    if (imagePath) {
+        exampleImage.src = imagePath;
+        circle.style.display = 'block';
+        alphabetChartContainer.classList.add('blurred');
+    } else {
+        circle.style.display = 'none';
+        alphabetChartContainer.classList.remove('blurred');
+    }
+}
+
+function hideCircle() {
+    var circle = document.getElementById('circle');
+    var alphabetChartContainer = document.querySelector('.alphabet-chart-container');
+    circle.style.display = 'none';
+    alphabetChartContainer.classList.remove('blurred');
+}
+
+// stars
+document.addEventListener("DOMContentLoaded", function () {
+	const starfield = document.querySelector(".starfield");
+
+	// Function to generate a random number within a range
+	function getRandomNumber(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+
+	// Function to create a star element
+	function createStar() {
+		const star = document.createElement("div");
+		star.classList.add("star");
+		const isShootingStar = Math.random() > 0.95; // 5% chance of creating a shooting star
+		if (isShootingStar) {
+			star.classList.add("shooting-star");
+			star.style.animationDuration = `${getRandomNumber(2, 4)}s`; // Set animation duration for shooting stars
+		}
+		star.style.left = `${getRandomNumber(0, 100)}vw`;
+		star.style.top = `${getRandomNumber(0, 100)}vh`;
+		star.style.width = `${isShootingStar ? getRandomNumber(3, 5) : getRandomNumber(1, 2)}px`; // Larger width for shooting stars
+		star.style.height = `${isShootingStar ? getRandomNumber(3, 5) : getRandomNumber(1, 2)}px`; // Larger height for shooting stars
+		starfield.appendChild(star);
+	}
+
+	// Generate stars including shooting stars
+	for (let i = 0; i < 1000; i++) {
+		createStar();
+	}
+
+	// Function to make stars fade in and out
+	function blinkStars() {
+		const stars = document.querySelectorAll(".star");
+		stars.forEach((star) => {
+			const duration = getRandomNumber(2, 4); // Randomize duration for each star
+			star.style.animation = `blink ${duration}s infinite alternate`;
+		});
+	}
+
+	// Blink stars
+	blinkStars();
+});
+</script>
+
+</body>
+</html>
