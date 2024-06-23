@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Card</title>
+    <style>
+        .table {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+        .chart {
+            height: 100vh;
+           width:80%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px;
+        }
+        html {
+            font-family: arial;
+            font-size: 18px;
+        }
+        td {
+            border: 1px solid black;
+            padding: 15px;
+        }
+        thead {
+            font-weight: bold;
+            text-align: center;
+            background: #625D5D;
+            color: white;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: right;
+            font-weight: bold;
+        }
+        tbody > tr:nth-child(odd) {
+            background: #D1D0CE;
+        }
+        .simple-bar-chart {
+            --line-count: 10;
+            --line-color: currentcolor;
+            --line-opacity: 0.25;
+            --item-gap: 2%;
+            --item-default-color: #060606;
+            height: 10rem;
+            display: grid;
+            grid-auto-flow: column;
+            gap: var(--item-gap);
+            align-items: end;
+            padding-inline: var(--item-gap);
+            --padding-block: 1.5rem;
+            padding-block: var(--padding-block);
+            position: relative;
+            isolation: isolate;
+        }
+        .simple-bar-chart::after {
+            content: "";
+            position: absolute;
+            inset: var(--padding-block) 0;
+            z-index: -1;
+            --line-width: 1px;
+            --line-spacing: calc(100% / var(--line-count));
+            background-image: repeating-linear-gradient(to top, transparent 0 calc(var(--line-spacing) - var(--line-width)), var(--line-color) 0 var(--line-spacing));
+            box-shadow: 0 var(--line-width) 0 var(--line-color);
+            opacity: var(--line-opacity);
+        }
+        .simple-bar-chart > .item {
+            height: calc(1% * var(--val));
+            background-color: var(--clr, var(--item-default-color));
+            position: relative;
+            animation: item-height 1s ease forwards;
+        }
+        @keyframes item-height { from { height: 0 } }
+        .simple-bar-chart > .item > * {
+            position: absolute;
+            text-align: center;
+        }
+        .simple-bar-chart > .item > .label {
+            inset: 100% 0 auto 0;
+        }
+        .simple-bar-chart > .item > .value {
+            inset: auto 0 100% 0;
+        }
+        .studentDetail {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+        .studentDetail div {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="table">
+        <h2>Student Marks Card</h2>
+        <div class="studentDetail">
+            <div><strong>Name:</strong> John Doe</div>
+            <div><strong>Registration Number:</strong> CS2022001</div>
+            <div><strong>Branch:</strong> Computer Science</div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="3">Course</td>
+                    <td rowspan="2">Semester</td>
+                    <td rowspan="2">Credits</td>
+                    <td colspan="2">Grade</td>
+                </tr>
+                <tr>
+                    <td>Code</td>
+                    <td colspan="2">Name</td>
+                    <td>Letter</td>
+                    <td>Points</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CS 225</td>
+                    <td colspan="2">Data Structures</td>
+                    <td>Fall 2015</td>
+                    <td>3.0</td>
+                    <td>A</td>
+                    <td>12.0</td>
+                </tr>
+                <tr>
+                    <td>PHIL 105</td>
+                    <td colspan="2">Ethics</td>
+                    <td>Fall 2015</td>
+                    <td>3.0</td>
+                    <td>A-</td>
+                    <td>10.98</td>
+                </tr>
+                <tr>
+                    <td>ECE 310</td>
+                    <td colspan="2">Digital Signal Processing</td>
+                    <td>Fall 2015</td>
+                    <td>3.0</td>
+                    <td>A</td>
+                    <td>12.0</td>
+                </tr>
+                <tr>
+                    <td>CS 373</td>
+                    <td colspan="2">Combinatorial Algorithms</td>
+                    <td>Fall 2015</td>
+                    <td>3.0</td>
+                    <td>B+</td>
+                    <td>9.99</td>
+                </tr>
+                <tr>
+                    <td>MATH 225</td>
+                    <td colspan="2">Multi-Variable Calculus</td>
+                    <td>Fall 2015</td>
+                    <td>3.0</td>
+                    <td>A-</td>
+                    <td>10.98</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="footer">Total</td>
+                    <td>15.0</td>
+                    <td colspan="2">55.95</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="footer">GPA</td>
+                    <td colspan="3">3.73 / 4.0</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="chart">
+      <h1>Student Progress Chart</h1>
+      <div class="simple-bar-chart">
+      
+        <div class="item" style="--clr: #5EB344; --val: 80">
+          <div class="label">Label 1</div>
+          <div class="value">80%</div>
+        </div>
+        
+        <div class="item" style="--clr: #FCB72A; --val: 50">
+          <div class="label">Label 2</div>
+          <div class="value">50%</div>
+        </div>
+        
+        <div class="item" style="--clr: #F8821A; --val: 100">
+          <div class="label">Label 3</div>
+          <div class="value">100%</div>
+        </div>
+        
+        <div class="item" style="--clr: #E0393E; --val: 15">
+          <div class="label">Label 4</div>
+          <div class="value">15%</div>
+        </div>
+        
+        <div class="item" style="--clr: #963D97; --val: 1">
+          <div class="label">Label 5</div>
+          <div class="value">1%</div>
+        </div>
+        
+        <div class="item" style="--clr: #069CDB; --val: 90">
+          <div class="label">Label 6</div>
+          <div class="value">90%</div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
